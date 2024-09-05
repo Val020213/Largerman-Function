@@ -8,7 +8,7 @@ lb = [0] * 10  # Límite inferior para cada dimensión
 ub = [10] * 10  # Límite superior para cada dimensión
 
 
-# Inicializar la lista para guardar los valores de la función
+# Inicializar la list a para guardar los valores de la función
 best_values = []
 duration = time.time()
 # Ejecutar el algoritmo PSO

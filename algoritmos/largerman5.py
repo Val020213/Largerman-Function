@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 # Definición de la función Langerman-5
@@ -22,3 +23,32 @@ def langerman5(x):
             * np.cos(np.pi * np.sum((x - A[i, :]) ** 2))
         )
     return -result
+
+
+def no_practical_example():
+    # Crear una malla de puntos
+    x = np.linspace(0, 10, 100)
+    y = np.linspace(0, 10, 100)
+    X, Y = np.meshgrid(x, y)
+    Z = np.zeros_like(X)
+
+    # Evaluar la función en la malla
+    for i in range(X.shape[0]):
+        for j in range(X.shape[1]):
+            Z[i, j] = langerman5(np.array([X[i, j], Y[i, j], 0, 0, 0, 0, 0, 0, 0, 0]))
+
+    # Plotear los resultados
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection="3d")
+    ax.plot_surface(X, Y, Z, cmap="viridis")
+
+    ax.set_xlabel("X")
+    ax.set_ylabel("Y")
+    ax.set_zlabel("Langerman-5")
+
+    plt.savefig("images/langerman5.png")
+    plt.show()
+
+
+if __name__ == "__main__":
+    no_practical_example()
